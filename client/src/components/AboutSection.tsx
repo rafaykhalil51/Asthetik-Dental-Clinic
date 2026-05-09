@@ -1,6 +1,6 @@
 /**
- * ASTHETIK DENTAL — About / Lead Doctor + Team Section
- * Design: Split layout doctor profile + 4-card team grid
+ * ASTHETIK DENTAL — About / Lead Doctor Section
+ * Design: Split layout doctor profile with credentials
  */
 import { CheckCircle } from "lucide-react";
 
@@ -13,32 +13,7 @@ const doctorCredentials = [
   "Trusted by Thousands of Patients",
 ];
 
-const teamMembers = [
-  {
-    name: "Dr. [Name]",
-    specialty: "General Dentist",
-    initials: "GD",
-    description: "BDS — Comprehensive dental care and preventive treatments",
-  },
-  {
-    name: "Dr. [Name]",
-    specialty: "Implantologist",
-    initials: "IM",
-    description: "Specialist in dental implants and oral surgery procedures",
-  },
-  {
-    name: "Dr. [Name]",
-    specialty: "Orthodontist",
-    initials: "OR",
-    description: "Specialist in braces, aligners, and bite correction",
-  },
-  {
-    name: "Dr. [Name]",
-    specialty: "Cosmetic Dentist",
-    initials: "CD",
-    description: "Expert in smile makeovers, veneers, and aesthetic dentistry",
-  },
-];
+
 
 export default function AboutSection() {
   return (
@@ -146,80 +121,7 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* Gold Divider */}
-      <div className="gold-divider" />
 
-      {/* Doctor Team Section */}
-      <section
-        id="team"
-        className="py-20"
-        style={{ backgroundColor: "#F8F6F0" }}
-      >
-        <div className="container">
-          <div className="text-center mb-12">
-            <div
-              className="inline-block text-xs font-semibold tracking-widest uppercase mb-3"
-              style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
-            >
-              Our Team
-            </div>
-            <h2
-              className="text-3xl md:text-4xl font-bold"
-              style={{ color: "#0B1F3A", fontFamily: "'Playfair Display', serif" }}
-            >
-              Meet Our Dental Specialists
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamMembers.map((member) => (
-              <div
-                key={member.specialty}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm border hover:shadow-lg transition-shadow"
-                style={{ borderColor: "#e8e0d0" }}
-              >
-                {/* Placeholder photo area */}
-                <div
-                  className="h-48 flex items-center justify-center"
-                  style={{ backgroundColor: "#0B1F3A" }}
-                >
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center text-2xl font-bold border-2"
-                    style={{
-                      backgroundColor: "rgba(201,168,76,0.15)",
-                      borderColor: "#C9A84C",
-                      color: "#C9A84C",
-                      fontFamily: "'Playfair Display', serif",
-                    }}
-                  >
-                    {member.initials}
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div
-                    className="font-bold text-sm mb-0.5"
-                    style={{ color: "#0B1F3A", fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {member.name}
-                  </div>
-                  <div
-                    className="text-xs font-semibold mb-2"
-                    style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {member.specialty}
-                  </div>
-                  <p
-                    className="text-xs text-gray-500 leading-relaxed"
-                    style={{ fontFamily: "'Poppins', sans-serif" }}
-                  >
-                    {member.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }
