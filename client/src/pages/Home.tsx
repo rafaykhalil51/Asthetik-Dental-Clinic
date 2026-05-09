@@ -1,25 +1,59 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
-
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * ASTHETIK DENTAL — Home Page
+ * Assembles all 15 sections in order
+ * Design: Clinical Luxury — Navy/Gold/White palette, Playfair Display + Poppins
  */
-export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import TrustSection from "@/components/TrustSection";
+import WhyTrustSection from "@/components/WhyTrustSection";
+import TechnologySection from "@/components/TechnologySection";
+import TreatmentsSection from "@/components/TreatmentsSection";
+import AboutSection from "@/components/AboutSection";
+import StandardsSection from "@/components/StandardsSection";
+import LocationSection from "@/components/LocationSection";
+import BrandsStrip from "@/components/BrandsStrip";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
+export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
+    <div className="min-h-screen">
+      {/* Sticky Navigation */}
+      <Navbar />
+
+      {/* 1. Hero / Banner Section */}
+      <HeroSection />
+
+      {/* 2. Trust Badges + 3. Google Reviews */}
+      <TrustSection />
+
+      {/* 4. Why Patients Trust Us + Brand Logos */}
+      <WhyTrustSection />
+
+      {/* 5. Smart Technology + 6. Gentle Dentistry */}
+      <TechnologySection />
+
+      {/* 7. Services / Treatments */}
+      <TreatmentsSection />
+
+      {/* 8. About / Lead Doctor + 9. Doctor Team */}
+      <AboutSection />
+
+      {/* 10. Clinical Standards + 11. Testimonials */}
+      <StandardsSection />
+
+      {/* 12. Location + 13. Book Consultation CTA + Booking Form */}
+      <LocationSection />
+
+      {/* 14. Partner Brands Strip */}
+      <BrandsStrip />
+
+      {/* 15. Footer */}
+      <Footer />
+
+      {/* WhatsApp Floating Button */}
+      <WhatsAppButton />
     </div>
   );
 }
