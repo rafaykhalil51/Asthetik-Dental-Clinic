@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663644156437/2qUwipAsjCNzN4DpwqnJiA",
+    "access_key_id": "ASIAZV3A2ECZIZCVJWAP",
+    "secret_access_key": "VMAHVGYbP30TYvPEeY8Yy/sRKALz1ZQjhVrEq6GU",
+    "session_token": "IQoJb3JpZ2luX2VjEJz//////////wEaCXVzLWVhc3QtMSJIMEYCIQD7JFAwbpUH1nYFEFxWQOAvBDNQLsZpomJMb8sSKIJG/AIhAIuwMFD8A5cD0kxG3lQznwA6WBFst6fV5CPu7exl5IiIKvYDCGUQBBoMNjY1Mzg2MDk4ODY2Igyexee5E/V17nMVWYUq0wORdNB5YinZHyQpqhfiOLy+AQ0xhgavg0Vu7eDzy9NdRL1IvAOukumiVb7mlusfESTiw/nOsnCbfykHMuewK8ZihNafs207jgfX4l+QrzWQw0Q9+j2sNy87AwQ+BsQE+TITJHjN58WS34YHoOMuk+DUWjgALEEvDOARStrdR8WWxPeLNEozx4pRVAYfLBk2dVKFI8xC7g9FCqr24v2axCs4z1PAJVj1HVeOMiPsgzCjUAuXiicIwiACs1kaPyLm3aE5UUzgJg/QxrTpXpkD5UzOjGPl7w+JOvGu25VU0kciFKYsN92XMxbI3om3DdoBNTa47ib58gnqlY+N8zOk4wHbrWddhIvjdKCmWmsckNU4jIUXT1azC5j215ZMyBu5CkKtZlq9mXggv8t57qP04wYntdRvTOwE6C6WXWGm/ZJDFQxJfoXAuzKbtO+66nts8Xe641MjI+dhkNgEl9Hu/rp+kT9hpBKzdGBRNSZ5RH1gWp3clh3luD9AxsjgkgpfVKNSAcneUF6G0vczu8CjXjvYe1PTvBzWDaYR+5tre13jRNeOpBx3GmBf0iLu8i1wPVj2iCIYBc//ru/4IkJ+vEFTMegUyyIyXyUA4Y3PR2YB8x/MTjDOy5jQBjqcAV6g5MqLY1iXGCC6LBW77iyKOaDZ5T6jSSoIt8HwY3COfQgppQZxXBXj7wZpk6BxTh+Qs4pGjMOUZ6JLCG/4n3M4FCe0ZbZbhAut4mWDGuY5K53SEUbcUQ8ewA7oN2jGKxzuxJ+t77UpsVgefPpAxmtpxkaa7hhUwa1fJQz7b3qMA2At6NeQdHXDg3fcjkUFpjDUDARbZ4UKr9EYkw==",
+    "expiration": "2026-05-15T07:43:10.000Z"
+  },
+  "name": "asthetik-dental",
+  "path": "/home/ubuntu/asthetik-dental",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "idhPsrJSpdoNeVUm95GKKJ",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "AEe47qtjPmi4NWuUsTi76j",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "rafay khalil",
+    "OWNER_OPEN_ID": "UagEYTemqj48qmBX8PSL88",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "db50349c-88be-4237-80b6-d5d63cfc3c2b",
+    "VITE_APP_ID": "2qUwipAsjCNzN4DpwqnJiA",
+    "VITE_APP_LOGO": "https://files.manuscdn.com/user_upload_by_module/web_dev_logo/310519663644156437/bSSsQJgmuDSjDTbs.png",
+    "VITE_APP_TITLE": "Asthetik Dental and Implant Centre",
+    "VITE_FRONTEND_FORGE_API_KEY": "kTN3J3ygm6iaFZwmjQtE5p",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
