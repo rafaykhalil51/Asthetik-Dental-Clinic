@@ -5,35 +5,31 @@ import { Link } from "wouter";
 const treatments = [
   {
     title: "General Dentistry",
-    description: "Keep your teeth healthy with routine checkups and cleanings.",
+    description: "Keep your teeth healthy with routine checkups, professional cleanings, and early-stage cavity prevention.",
     icon: Stethoscope,
-    color: "from-blue-500/10 to-blue-500/5",
-    iconBg: "bg-blue-50 text-blue-600",
     accent: "#3B82F6",
+    photo: "/reception.jpg",
   },
   {
-    title: "Restorative Dentistry",
-    description: "Repair damaged teeth with crowns, bridges, and implants.",
+    title: "Dental Implants",
+    description: "Replace missing teeth permanently with titanium implants that look, feel, and function like natural teeth.",
     icon: Activity,
-    color: "from-sky-500/10 to-sky-500/5",
-    iconBg: "bg-sky-50 text-sky-600",
     accent: "#0EA5E9",
+    photo: "/dental-implant.jpg",
   },
   {
-    title: "Cosmetic Dentistry",
-    description: "Enhance your smile with whitening, veneers, and more.",
+    title: "Teeth Whitening",
+    description: "Professionally whiten your smile by several shades in a single comfortable in-clinic session.",
     icon: Sparkle,
-    color: "from-indigo-500/10 to-indigo-500/5",
-    iconBg: "bg-indigo-50 text-indigo-600",
     accent: "#6366F1",
+    photo: "/teeth-whitening.jpg",
   },
   {
-    title: "Pediatric Dentistry",
-    description: "Specialized care for children's unique dental needs.",
+    title: "Wisdom Tooth Surgery",
+    description: "Safe, precise extraction of impacted wisdom teeth with minimal recovery time and post-op care included.",
     icon: HeartPulse,
-    color: "from-emerald-500/10 to-emerald-500/5",
-    iconBg: "bg-emerald-50 text-emerald-600",
     accent: "#10B981",
+    photo: "/wisdom-tooth.jpg",
   },
 ];
 
@@ -137,33 +133,63 @@ export default function TreatmentsSection() {
                   key={idx}
                   variants={item}
                   whileHover={{ y: -8, scale: 1.02 }}
-                  className={`p-9 rounded-[2rem] border border-gray-100 bg-gradient-to-br ${t.color} cursor-pointer group relative overflow-hidden`}
-                  style={{ transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)" }}
+                  className="rounded-[2rem] border border-gray-100 cursor-pointer group relative overflow-hidden aspect-[4/5]"
+                  style={{ transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)", boxShadow: "0 4px 24px rgba(12,27,46,0.08)" }}
                 >
-                  {/* Animated glow on hover */}
+                  {/* Photo background with scale-on-hover */}
+                  <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
+                    <img
+                      src={t.photo}
+                      alt={t.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+
+                  {/* Gradient overlay — always dark at bottom, lightens on hover */}
+                  <div
+                    className="absolute inset-0 rounded-[2rem] transition-all duration-500"
+                    style={{
+                      background: `linear-gradient(to top, rgba(5,13,26,0.92) 0%, rgba(5,13,26,0.55) 50%, rgba(5,13,26,0.15) 100%)`,
+                    }}
+                  />
+
+                  {/* Accent glow on hover */}
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"
-                    style={{ boxShadow: `inset 0 0 40px ${t.accent}15` }}
+                    style={{ background: `linear-gradient(to top, ${t.accent}40 0%, transparent 60%)` }}
                   />
-                  {/* Animated border top */}
+
+                  {/* Top accent line on hover */}
                   <div
-                    className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-400"
                     style={{ background: `linear-gradient(to right, transparent, ${t.accent}, transparent)` }}
                   />
 
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-10 ${t.iconBg} group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon size={24} />
-                  </div>
-                  <h3 className="text-navy font-bold text-xl mb-3 group-hover:text-sky transition-colors duration-300">
-                    {t.title}
-                  </h3>
-                  <p className="text-navy/50 text-sm leading-relaxed">
-                    {t.description}
-                  </p>
+                  {/* Content overlay */}
+                  <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                    {/* Top: icon badge */}
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                      style={{ background: `${t.accent}30`, color: "#fff", backdropFilter: "blur(8px)", border: `1px solid ${t.accent}50` }}
+                    >
+                      <Icon size={22} />
+                    </div>
 
-                  <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
-                    style={{ color: t.accent }}>
-                    Learn More <ArrowRight size={12} />
+                    {/* Bottom: text */}
+                    <div>
+                      <h3 className="text-white font-bold text-xl mb-2 group-hover:translate-x-1 transition-transform duration-300">
+                        {t.title}
+                      </h3>
+                      <p className="text-white/60 text-sm leading-relaxed mb-5">
+                        {t.description}
+                      </p>
+                      <div
+                        className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
+                        style={{ color: t.accent }}
+                      >
+                        Learn More <ArrowRight size={12} />
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               );

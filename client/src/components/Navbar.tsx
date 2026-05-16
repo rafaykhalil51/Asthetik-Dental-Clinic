@@ -35,12 +35,55 @@ export default function Navbar() {
           
           {/* Brand */}
           <Link href="/">
-            <div className="group cursor-pointer">
+            <div className="flex items-center gap-3 group cursor-pointer">
               <img
                 src="/logo.png"
-                alt="Asthetik Dental"
+                alt="Asthetik Dental and Implant"
                 className="h-14 w-auto transition-all duration-300 group-hover:opacity-80"
               />
+              <AnimatePresence>
+                {isScrolled && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="hidden sm:block"
+                  >
+                    {/* Main name — Playfair Display Canela-style */}
+                    <div
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        fontStyle: "italic",
+                        fontWeight: 800,
+                        fontSize: "18px",
+                        lineHeight: 1.1,
+                        backgroundImage: "linear-gradient(135deg, #0C1B2E 0%, #0C3460 45%, #0EA5E9 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      Asthetik Dental
+                    </div>
+                    {/* Sub name */}
+                    <div
+                      style={{
+                        fontFamily: "'Outfit', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "7.5px",
+                        letterSpacing: "0.22em",
+                        textTransform: "uppercase",
+                        color: "#0EA5E9",
+                        marginTop: "2px",
+                      }}
+                    >
+                      and Implant Centre
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </Link>
 

@@ -33,9 +33,56 @@ export default function Footer() {
               <div className="mb-8 cursor-pointer group w-fit">
                 <img
                   src="/logo.png"
-                  alt="Asthetik Dental Logo"
-                  className="h-16 w-auto group-hover:opacity-80 transition-all"
+                  alt="Asthetik Dental and Implant Logo"
+                  className="h-16 w-auto group-hover:opacity-80 transition-all mb-3"
                 />
+                <div style={{ marginTop: "4px" }}>
+                  {/* Headline in Playfair Display — Canela-style */}
+                  <div
+                    style={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontStyle: "italic",
+                      fontWeight: 900,
+                      fontSize: "24px",
+                      lineHeight: 1.05,
+                      backgroundImage: "linear-gradient(135deg, #0C1B2E 0%, #0C3460 45%, #0EA5E9 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    Asthetik Dental
+                  </div>
+                  {/* Sub label */}
+                  <div
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontWeight: 700,
+                      fontSize: "8px",
+                      letterSpacing: "0.25em",
+                      textTransform: "uppercase",
+                      color: "#0EA5E9",
+                      marginTop: "4px",
+                    }}
+                  >
+                    and Implant Centre
+                  </div>
+                  {/* Location tag */}
+                  <div
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontWeight: 500,
+                      fontSize: "7.5px",
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                      color: "#94A3B8",
+                      marginTop: "6px",
+                    }}
+                  >
+                    DHA Karachi · Est. 2014
+                  </div>
+                </div>
               </div>
             </Link>
 
