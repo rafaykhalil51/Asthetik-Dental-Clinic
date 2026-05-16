@@ -304,7 +304,7 @@ export default function LocationSection() {
                 <img 
                   src="/reception.jpg" 
                   alt="Asthetik Dental Clinic Reception" 
-                  className="w-full h-auto max-h-[700px] object-contain mx-auto"
+                  className="w-full h-auto block"
                 />
               </div>
 
