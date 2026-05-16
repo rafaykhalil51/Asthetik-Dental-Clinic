@@ -300,11 +300,11 @@ export default function LocationSection() {
               </div>
 
               {/* Location Photo */}
-              <div className="rounded-2xl overflow-hidden shadow-md mb-6 border aspect-[3/4]" style={{ borderColor: "#e8e0d0" }}>
+              <div className="rounded-2xl overflow-hidden shadow-md mb-6 border bg-white" style={{ borderColor: "#e8e0d0" }}>
                 <img 
                   src="/reception.jpg" 
                   alt="Asthetik Dental Clinic Reception" 
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-auto max-h-[700px] object-contain mx-auto"
                 />
               </div>
 
