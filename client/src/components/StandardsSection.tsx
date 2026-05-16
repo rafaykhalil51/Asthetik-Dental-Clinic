@@ -106,52 +106,110 @@ export default function StandardsSection() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Background glow */}
-              <div className="absolute -inset-4 rounded-[3rem]"
-                style={{ background: "radial-gradient(circle at 40% 40%, rgba(14,165,233,0.07), transparent 70%)" }} />
+              {/* Outer glow */}
+              <div
+                className="absolute -inset-6 rounded-[3.5rem] blur-2xl opacity-40 pointer-events-none"
+                style={{ background: "radial-gradient(circle at 40% 50%, rgba(14,165,233,0.35), rgba(12,27,46,0.6) 70%)" }}
+              />
 
               <div
-                className="relative rounded-[2.5rem] overflow-hidden shadow-[0_24px_80px_rgba(12,27,46,0.1)] p-14 flex flex-col justify-between min-h-[460px]"
-                style={{ background: "#0C1B2E", border: "1px solid rgba(255,255,255,0.05)" }}
+                className="relative rounded-[2.5rem] overflow-hidden shadow-[0_32px_100px_rgba(12,27,46,0.25)]"
+                style={{ border: "1px solid rgba(14,165,233,0.15)" }}
               >
-                <div className="absolute inset-0 opacity-10"
-                  style={{ background: "radial-gradient(circle at 30% 30%, #0EA5E9, transparent 60%), radial-gradient(circle at 70% 70%, #C9A84C, transparent 60%)" }} />
+                {/* Background image */}
+                <img
+                  src="/reception.jpg"
+                  alt="Asthetik Dental Clinic Interior"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ filter: "brightness(0.25) saturate(0.6)" }}
+                />
 
-                <div className="relative z-10">
-                  <div
-                    className="text-6xl font-bold mb-2"
-                    style={{ color: "#0EA5E9", fontFamily: "'DM Serif Display', serif" }}
+                {/* Color mesh overlay */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at 20% 20%, rgba(14,165,233,0.22) 0%, transparent 55%), radial-gradient(ellipse at 80% 80%, rgba(12,27,46,0.8) 0%, transparent 60%)",
+                  }}
+                />
+
+                {/* Content */}
+                <div className="relative z-10 p-10 md:p-12">
+
+                  {/* Hero stat */}
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    className="mb-10 pb-10 border-b"
+                    style={{ borderColor: "rgba(14,165,233,0.2)" }}
                   >
-                    99.8%
-                  </div>
-                  <div className="text-white/35 text-[10px] uppercase tracking-[0.2em] font-bold">
-                    Successful Clinical Outcomes
-                  </div>
-                </div>
-
-                <div className="relative z-10 grid grid-cols-2 gap-8 mt-12">
-                  {[
-                    { val: "15k+", label: "Smiles Designed" },
-                    { val: "10+", label: "Years of Mastery" },
-                    { val: "100%", label: "Digital Workflow" },
-                    { val: "Intl.", label: "Protocols Met" },
-                  ].map((stat, i) => (
-                    <div key={i}>
-                      <div className="text-white text-3xl font-bold mb-1" style={{ fontFamily: "'DM Serif Display', serif" }}>
-                        {stat.val}
-                      </div>
-                      <div className="text-white/30 text-[9px] uppercase font-bold tracking-widest">
-                        {stat.label}
-                      </div>
+                    <div
+                      className="font-bold leading-none mb-3"
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        fontStyle: "italic",
+                        fontSize: "clamp(4rem, 10vw, 6.5rem)",
+                        backgroundImage: "linear-gradient(135deg, #0EA5E9 0%, #38BDF8 50%, #BAE6FD 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                        filter: "drop-shadow(0 0 24px rgba(14,165,233,0.5))",
+                      }}
+                    >
+                      99.8%
                     </div>
-                  ))}
-                </div>
+                    <div
+                      className="text-white/55 font-bold uppercase tracking-[0.22em]"
+                      style={{ fontSize: "11px" }}
+                    >
+                      Successful Clinical Outcomes
+                    </div>
+                  </motion.div>
 
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 w-full h-1"
-                  style={{ background: "linear-gradient(to right, #0EA5E9, #C9A84C)" }} />
+                  {/* 4 supporting stats */}
+                  <div className="grid grid-cols-2 gap-x-8 gap-y-8">
+                    {[
+                      { val: "15k+", label: "Smiles Designed", color: "#0EA5E9" },
+                      { val: "10+",  label: "Years of Mastery", color: "#38BDF8" },
+                      { val: "100%", label: "Digital Workflow", color: "#0EA5E9" },
+                      { val: "Intl.", label: "Protocols Met",   color: "#38BDF8" },
+                    ].map((stat, i) => (
+                      <motion.div
+                        key={i}
+                        whileHover={{ y: -4, scale: 1.04 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        className="group cursor-default"
+                      >
+                        <div
+                          className="font-bold leading-none mb-2 transition-all duration-300"
+                          style={{
+                            fontFamily: "'Playfair Display', serif",
+                            fontStyle: "italic",
+                            fontSize: "clamp(2rem, 5vw, 3rem)",
+                            color: stat.color,
+                            filter: "drop-shadow(0 0 10px rgba(14,165,233,0.3))",
+                          }}
+                        >
+                          {stat.val}
+                        </div>
+                        <div
+                          className="text-white/45 font-bold uppercase tracking-[0.18em] group-hover:text-white/70 transition-colors duration-300"
+                          style={{ fontSize: "9px" }}
+                        >
+                          {stat.label}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Bottom gradient bar */}
+                  <div
+                    className="mt-10 h-[3px] rounded-full"
+                    style={{ background: "linear-gradient(to right, #0EA5E9, #0C3460, #0EA5E9)" }}
+                  />
+                </div>
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
