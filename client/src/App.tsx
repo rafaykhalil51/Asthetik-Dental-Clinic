@@ -44,6 +44,9 @@ function App() {
       infinite: false,
     });
 
+    // Expose globally so ScrollToTop can call lenis.scrollTo(0)
+    (window as any).__lenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -53,6 +56,7 @@ function App() {
 
     return () => {
       lenis.destroy();
+      (window as any).__lenis = null;
     };
   }, []);
 
