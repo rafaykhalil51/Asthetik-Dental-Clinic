@@ -313,3 +313,49 @@
   90%  { opacity: 0.4; }
   100% { transform: translateY(110%); opacity: 0; }
 }
+
+/* ─────────────────────────────────────────
+   CUSTOM SCROLLBAR — Asthetik Dental Theme
+   ───────────────────────────────────────── */
+
+/* Width */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0C1B2E;
+  border-radius: 999px;
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0EA5E9 0%, #0C3460 100%);
+  border-radius: 999px;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  transition: background 0.3s ease;
+}
+
+/* Thumb hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #38BDF8 0%, #0EA5E9 100%);
+  box-shadow: 0 0 8px rgba(14, 165, 233, 0.6);
+}
+
+/* Thumb active (dragging) */
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #BAE6FD 0%, #38BDF8 100%);
+}
+
+/* Corner where scrollbars meet */
+::-webkit-scrollbar-corner {
+  background: #0C1B2E;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0EA5E9 #0C1B2E;
+}
