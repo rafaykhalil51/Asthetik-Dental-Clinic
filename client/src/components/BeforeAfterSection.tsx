@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 const cases = [
@@ -28,23 +28,13 @@ const cases = [
   },
 ];
 
-function VerticalSliderCard({
-  c,
-  idx,
-}: {
-  c: (typeof cases)[0];
-  idx: number;
-}) {
-  const [sliderPos, setSliderPos] = useState(50); // 0=top(before only), 100=bottom(after only)
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+function CaseCard({ c, idx }: { c: (typeof cases)[0]; idx: number }) {
+  // null = neither, 'before' = top hovered, 'after' = bottom hovered
+  const [active, setActive] = useState<"before" | "after" | null>(null);
 
-  const updateSlider = (clientY: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const pos = ((clientY - rect.top) / rect.height) * 100;
-    setSliderPos(Math.min(Math.max(pos, 2), 98));
-  };
+  const panelBase = "relative overflow-hidden cursor-pointer select-none";
+  const imgBase =
+    "w-full h-full object-cover transition-all duration-500 ease-out";
 
   return (
     <motion.div
@@ -52,95 +42,146 @@ function VerticalSliderCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: idx * 0.1, duration: 0.6 }}
-      className="flex flex-col rounded-[2rem] overflow-hidden shadow-2xl shadow-navy/10 border border-white/80 bg-white"
+      className="rounded-[2rem] overflow-hidden shadow-2xl shadow-navy/10 border border-white bg-white flex flex-col"
     >
-      {/* Slider card */}
+      {/* ── BEFORE panel (top half of image) ── */}
       <div
-        ref={containerRef}
-        className="relative aspect-square cursor-ns-resize select-none overflow-hidden"
-        onMouseMove={(e) => { if (isDragging) updateSlider(e.clientY); }}
-        onMouseDown={(e) => { setIsDragging(true); updateSlider(e.clientY); }}
-        onMouseUp={() => setIsDragging(false)}
-        onMouseLeave={() => setIsDragging(false)}
-        onTouchMove={(e) => updateSlider(e.touches[0].clientY)}
-        onTouchStart={(e) => updateSlider(e.touches[0].clientY)}
+        className={`${panelBase} h-52`}
+        onMouseEnter={() => setActive("before")}
+        onMouseLeave={() => setActive(null)}
+        onClick={() => setActive(active === "before" ? null : "before")}
       >
-        {/* FULL image — "after" (bottom half) — always behind */}
-        <div className="absolute inset-0">
-          <img
-            src={c.image}
-            alt={`After — ${c.treatment}`}
-            className="w-full h-full object-cover"
-            draggable={false}
-          />
-          {/* After label — bottom */}
-          <div
-            className="absolute bottom-3 right-3 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.18em] text-white"
-            style={{ background: "rgba(14,165,233,0.85)", backdropFilter: "blur(8px)" }}
-          >
-            After
-          </div>
-        </div>
-
-        {/* BEFORE layer — clips from BOTTOM (shows top portion = before) */}
-        <div
-          className="absolute inset-0"
-          style={{ clipPath: `inset(0 0 ${100 - sliderPos}% 0)` }}
-        >
-          <img
-            src={c.image}
-            alt={`Before — ${c.treatment}`}
-            className="w-full h-full object-cover"
-            style={{ filter: "brightness(0.92) contrast(1.05)" }}
-            draggable={false}
-          />
-          {/* Before label — top */}
-          <div
-            className="absolute top-3 left-3 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.18em] text-white"
-            style={{ background: "rgba(12,27,46,0.75)", backdropFilter: "blur(8px)" }}
-          >
-            Before
-          </div>
-        </div>
-
-        {/* Horizontal divider line */}
-        <div
-          className="absolute left-0 right-0 h-[2px] bg-white z-20 pointer-events-none"
-          style={{ top: `${sliderPos}%` }}
+        {/* Image — shows top portion */}
+        <img
+          src={c.image}
+          alt={`Before — ${c.treatment}`}
+          draggable={false}
+          className={imgBase}
+          style={{
+            objectPosition: "top",
+            transform:
+              active === "before"
+                ? "scale(1.12)"
+                : active === "after"
+                ? "scale(0.97)"
+                : "scale(1)",
+            filter:
+              active === "after"
+                ? "brightness(0.55) grayscale(0.3)"
+                : active === "before"
+                ? "brightness(1.08) contrast(1.06)"
+                : "brightness(1)",
+          }}
         />
 
-        {/* Drag handle */}
+        {/* BEFORE pill */}
         <div
-          className="absolute left-1/2 z-30 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          style={{ top: `${sliderPos}%` }}
+          className="absolute top-3 left-3 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.18em] text-white transition-all duration-300"
+          style={{
+            background:
+              active === "before"
+                ? "rgba(12,27,46,0.92)"
+                : "rgba(12,27,46,0.6)",
+            backdropFilter: "blur(8px)",
+            transform: active === "before" ? "scale(1.08)" : "scale(1)",
+          }}
         >
-          <div
-            className="w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-xl"
-            style={{ border: "2px solid rgba(14,165,233,0.4)" }}
-          >
-            {/* Up/down arrows */}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 5v14M5 12l7-7 7 7M5 12l7 7 7-7" stroke="#0C1B2E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
+          Before
         </div>
 
-        {/* Drag hint — fades after interaction */}
-        <div className="absolute inset-x-0 bottom-10 flex justify-center z-20 pointer-events-none">
+        {/* Hover glow overlay */}
+        {active === "before" && (
           <div
-            className="px-3 py-1 rounded-full text-[8px] font-bold uppercase tracking-widest text-white/70"
-            style={{ background: "rgba(0,0,0,0.25)", backdropFilter: "blur(4px)" }}
-          >
-            Drag up / down
-          </div>
-        </div>
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(12,27,46,0.0) 60%, rgba(12,27,46,0.35) 100%)",
+            }}
+          />
+        )}
+
+        {/* Dim overlay when after is active */}
+        <div
+          className="absolute inset-0 bg-navy transition-opacity duration-400 pointer-events-none"
+          style={{ opacity: active === "after" ? 0.45 : 0 }}
+        />
       </div>
 
-      {/* Info footer */}
-      <div className="px-6 py-5 bg-white border-t border-gray-50">
-        <div className="text-sky text-[8px] font-bold uppercase tracking-[0.22em] mb-1">{c.treatment}</div>
-        <div className="text-navy font-bold text-[15px] mb-1">{c.label}</div>
-        <p className="text-navy/40 text-xs font-light leading-relaxed">{c.desc}</p>
+      {/* ── Divider line ── */}
+      <div className="h-[2px] bg-gradient-to-r from-transparent via-sky/40 to-transparent flex-shrink-0" />
+
+      {/* ── AFTER panel (bottom half of image) ── */}
+      <div
+        className={`${panelBase} h-52`}
+        onMouseEnter={() => setActive("after")}
+        onMouseLeave={() => setActive(null)}
+        onClick={() => setActive(active === "after" ? null : "after")}
+      >
+        {/* Image — shows bottom portion */}
+        <img
+          src={c.image}
+          alt={`After — ${c.treatment}`}
+          draggable={false}
+          className={imgBase}
+          style={{
+            objectPosition: "bottom",
+            transform:
+              active === "after"
+                ? "scale(1.12)"
+                : active === "before"
+                ? "scale(0.97)"
+                : "scale(1)",
+            filter:
+              active === "before"
+                ? "brightness(0.55) grayscale(0.3)"
+                : active === "after"
+                ? "brightness(1.08) contrast(1.06) saturate(1.1)"
+                : "brightness(1)",
+          }}
+        />
+
+        {/* AFTER pill */}
+        <div
+          className="absolute bottom-3 right-3 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.18em] text-white transition-all duration-300"
+          style={{
+            background:
+              active === "after"
+                ? "rgba(14,165,233,0.95)"
+                : "rgba(14,165,233,0.65)",
+            backdropFilter: "blur(8px)",
+            transform: active === "after" ? "scale(1.08)" : "scale(1)",
+          }}
+        >
+          After
+        </div>
+
+        {/* Glow from bottom on active */}
+        {active === "after" && (
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(14,165,233,0.12) 0%, transparent 70%)",
+            }}
+          />
+        )}
+
+        {/* Dim overlay when before is active */}
+        <div
+          className="absolute inset-0 bg-navy transition-opacity duration-400 pointer-events-none"
+          style={{ opacity: active === "before" ? 0.45 : 0 }}
+        />
+      </div>
+
+      {/* ── Info footer ── */}
+      <div className="px-5 py-4 bg-white border-t border-gray-50 flex-shrink-0">
+        <div className="text-sky text-[8px] font-bold uppercase tracking-[0.22em] mb-0.5">
+          {c.treatment}
+        </div>
+        <div className="text-navy font-bold text-[14px] mb-1">{c.label}</div>
+        <p className="text-navy/40 text-[11px] font-light leading-relaxed">
+          {c.desc}
+        </p>
       </div>
     </motion.div>
   );
@@ -149,12 +190,11 @@ function VerticalSliderCard({
 export default function BeforeAfterSection() {
   return (
     <section className="py-28 bg-gray-50/60 relative overflow-hidden">
-      {/* Background blobs */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-sky/4 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-navy/4 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
       <div className="container relative z-10">
-        {/* Section header */}
+        {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -190,16 +230,18 @@ export default function BeforeAfterSection() {
             transition={{ delay: 0.15 }}
             className="text-navy/50 text-lg font-light leading-relaxed"
           >
-            Real transformations performed by Dr. Zaheer Hussain at Asthetik
-            Dental and Implant Centre, DHA Karachi. Drag each card vertically to
-            compare.
+            Real transformations by Dr. Zaheer Hussain at Asthetik Dental and
+            Implant Centre, DHA Karachi.{" "}
+            <span className="text-sky font-medium">
+              Hover Before or After to zoom in.
+            </span>
           </motion.p>
         </div>
 
-        {/* 2×2 card grid */}
+        {/* 2×2 grid */}
         <div className="grid sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {cases.map((c, idx) => (
-            <VerticalSliderCard key={idx} c={c} idx={idx} />
+            <CaseCard key={idx} c={c} idx={idx} />
           ))}
         </div>
       </div>
