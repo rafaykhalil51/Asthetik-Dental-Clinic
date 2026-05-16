@@ -1,179 +1,220 @@
-/**
- * ASTHETIK DENTAL — Smart Technology + Gentle Dentistry
- * Design: White bg tech cards + split-screen gentle dentistry section
- */
-import { CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { Scan, Zap, Camera, ShieldCheck, Heart, Link2 } from "lucide-react";
+import { Link } from "wouter";
 
 const TECH_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/dental-technology-4q2coUkpCs3Sq9Dk9gGKds.webp";
 const GENTLE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/gentle-dentistry-nbm3F2W7qFu4VFv3XaV4gN.webp";
 
 const technologies = [
   {
-    icon: "🔭",
-    title: "Digital X-Ray & CBCT 3D Imaging",
-    description:
-      "Full-mouth scans for accurate diagnosis. Our CBCT scanner provides a comprehensive 3D view of your teeth, jaws, and surrounding structures with exceptional clarity beyond traditional imaging.",
+    icon: Scan,
+    title: "CBCT 3D Imaging",
+    description: "High-resolution 3D diagnostics for precise implant placement and complex cases.",
   },
   {
-    icon: "💉",
-    title: "Painless Injection System",
-    description:
-      "Computer-controlled delivery for zero discomfort. Our ICT system delivers local anaesthetic gently and precisely at a controlled pressure, minimising discomfort during treatment.",
+    icon: Zap,
+    title: "Painless Anesthesia",
+    description: "Computer-controlled local anesthesia systems for a completely discomfort-free experience.",
   },
   {
-    icon: "📷",
-    title: "Intraoral Camera",
-    description:
-      "Real-time visuals of your teeth and gum health. See exactly what our dentists see — enabling transparent, informed treatment decisions and better patient understanding.",
+    icon: Camera,
+    title: "Intraoral Scanning",
+    description: "Digital impressions without the mess, enabling perfect fit for crowns and aligners.",
   },
 ];
 
 const gentlePoints = [
-  "Every patient is treated with comfort and communication as top priorities",
-  "Pain-free techniques minimise stress and anxiety",
-  "Procedures completed according to patient comfort and needs",
-  "Specialised in providing every child dental care",
-  "Treatment plans explained clearly before any procedure begins",
+  "Advanced stress-reduction protocols",
+  "Zero-pressure clinical environment",
+  "Minimally invasive surgical techniques",
+  "Specialized pediatric care journey",
+  "Transparent digital treatment planning",
 ];
 
 export default function TechnologySection() {
   return (
-    <>
-      {/* Smart Technology Section */}
-      <section id="technology" className="py-20 bg-white">
-        <div className="container">
-          <div className="text-center mb-14">
-            <div
-              className="inline-block text-xs font-semibold tracking-widest uppercase mb-3"
-              style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
+    <div>
+      {/* ── Technology Block: Warm White ── */}
+      <section id="technology" className="py-32 relative overflow-hidden bg-warm-white">
+        <div className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(to right, transparent, #E8E5DF, transparent)" }} />
+        
+        <div className="container relative z-10">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            
+            {/* Left: Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
             >
-              Innovation
-            </div>
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ color: "#0B1F3A", fontFamily: "'Playfair Display', serif" }}
-            >
-              Smart Technology for Precise,
-              <br />
-              <span style={{ color: "#C9A84C" }}>Comfortable Care</span>
-            </h2>
-            <p
-              className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              We invest in the latest dental technology to ensure every diagnosis is accurate, every procedure is comfortable, and every outcome is predictable.
-            </p>
-          </div>
+              <div className="eyebrow text-sky mb-5">
+                <div className="w-6 h-px bg-sky" />
+                Innovation Hub
+              </div>
+              <h2 className="display-heading text-4xl md:text-5xl text-navy mb-4">
+                Smart Tech.
+              </h2>
+              <h2 className="display-heading text-4xl md:text-5xl mb-8 text-sky" style={{ fontStyle: "italic" }}>
+                Precise Results.
+              </h2>
+              <div className="divider-gold mb-8" />
+              <p className="text-[#64748b] text-lg font-light leading-relaxed mb-12 max-w-lg">
+                We invest in the pinnacle of dental technology to ensure your journey is predictable, efficient, and exceptionally comfortable.
+              </p>
 
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* Left: Image */}
-            <div className="rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src={TECH_IMG}
-                alt="Dental Technology at Asthetik Dental"
-                className="w-full h-72 md:h-96 object-cover"
-              />
-            </div>
+              <div className="space-y-5">
+                {technologies.map((tech, idx) => {
+                  const Icon = tech.icon;
+                  return (
+                    <Link key={idx} href="/technology">
+                      <motion.div
+                        whileHover={{ x: 6 }}
+                        className="card-premium flex gap-5 p-6 cursor-pointer"
+                      >
+                        <div
+                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                          style={{ background: "rgba(14,165,233,0.08)", border: "1px solid rgba(14,165,233,0.2)" }}
+                        >
+                          <Icon size={20} className="text-sky" />
+                        </div>
+                        <div>
+                          <h3 className="text-base font-semibold text-navy mb-1" style={{ fontFamily: "'DM Serif Display', serif" }}>
+                            {tech.title}
+                          </h3>
+                          <p className="text-sm text-[#64748b] font-light leading-relaxed">{tech.description}</p>
+                        </div>
+                        <Link2 size={14} className="text-navy/20 ml-auto flex-shrink-0 mt-1" />
+                      </motion.div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </motion.div>
 
-            {/* Right: Tech Cards */}
-            <div className="flex flex-col gap-5">
-              {technologies.map((tech) => (
-                <div
-                  key={tech.title}
-                  className="flex gap-4 p-5 rounded-xl border card-hover"
-                  style={{ borderColor: "#e8e0d0" }}
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                    style={{ backgroundColor: "#F8F6F0" }}
-                  >
-                    {tech.icon}
-                  </div>
+            {/* Right: Visual */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.93 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="relative"
+            >
+              {/* Glow */}
+              <div className="absolute -inset-6 rounded-[3rem] opacity-60"
+                style={{ background: "radial-gradient(circle at 50% 50%, rgba(14,165,233,0.12), transparent 70%)" }} />
+
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_24px_80px_rgba(12,27,46,0.12)]"
+                style={{ border: "1px solid #E8E5DF" }}>
+                <img
+                  src={TECH_IMG}
+                  alt="Advanced Dental Technology"
+                  className="w-full h-[580px] object-cover"
+                />
+                <div className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, rgba(12,27,46,0.3) 0%, transparent 50%)" }} />
+              </div>
+
+              {/* Floating badge */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-8 -left-8 rounded-2xl px-7 py-5 shadow-[0_8px_40px_rgba(12,27,46,0.15)]"
+                style={{ background: "#0C1B2E", border: "1px solid rgba(255,255,255,0.06)" }}
+              >
+                <div className="flex items-center gap-3">
+                  <ShieldCheck className="text-sky" size={28} />
                   <div>
-                    <h3
-                      className="font-semibold text-sm mb-1"
-                      style={{ color: "#0B1F3A", fontFamily: "'Poppins', sans-serif" }}
-                    >
-                      {tech.title}
-                    </h3>
-                    <p
-                      className="text-xs text-gray-500 leading-relaxed"
-                      style={{ fontFamily: "'Poppins', sans-serif" }}
-                    >
-                      {tech.description}
-                    </p>
+                    <div className="text-white text-lg font-bold">100%</div>
+                    <div className="text-white/40 text-[9px] uppercase tracking-widest font-semibold">Digital Workflow</div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Gold Divider */}
-      <div className="gold-divider" />
+      {/* ── Gentle Dentistry Block: Warm Muted ── */}
+      <section id="gentle-dentistry" className="py-32 relative overflow-hidden bg-warm-muted">
+        <div className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(to right, transparent, #D0CCC3, transparent)" }} />
 
-      {/* Gentle Dentistry Section */}
-      <section
-        id="gentle-dentistry"
-        className="py-20"
-        style={{ backgroundColor: "#F8F6F0" }}
-      >
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container relative z-10">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            
             {/* Left: Image */}
-            <div className="rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1">
-              <img
-                src={GENTLE_IMG}
-                alt="Gentle Dentistry for Families"
-                className="w-full h-80 md:h-[420px] object-cover"
-              />
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-2 lg:order-1 relative"
+            >
+              <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_24px_80px_rgba(12,27,46,0.12)] group"
+                style={{ border: "1px solid rgba(12,27,46,0.06)" }}>
+                <img
+                  src={GENTLE_IMG}
+                  alt="Patient Comfort"
+                  className="w-full h-[540px] object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, rgba(12,27,46,0.3) 0%, transparent 50%)" }} />
+              </div>
+            </motion.div>
 
             {/* Right: Content */}
-            <div className="order-1 lg:order-2">
-              <div
-                className="inline-block text-xs font-semibold tracking-widest uppercase mb-3"
-                style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
-              >
-                Patient Comfort
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 lg:order-2"
+            >
+              <div className="eyebrow text-navy/50 mb-5">
+                <div className="w-6 h-px bg-navy/30" />
+                Patient Journey
               </div>
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ color: "#0B1F3A", fontFamily: "'Playfair Display', serif" }}
-              >
-                Gentle Dentistry
-                <br />
-                <span style={{ color: "#C9A84C" }}>for Every Patient</span>
+              <h2 className="display-heading text-4xl md:text-5xl text-navy mb-4">
+                A Gentle
               </h2>
-              <p
-                className="text-gray-600 mb-8 leading-relaxed text-sm"
-                style={{ fontFamily: "'Poppins', sans-serif" }}
-              >
-                Our approach to care prioritises patient comfort, clear communication, and minimally invasive techniques — particularly for anxious patients and children.
+              <h2 className="display-heading text-4xl md:text-5xl mb-8 text-sky" style={{ fontStyle: "italic" }}>
+                Perspective.
+              </h2>
+              <div className="divider-gold mb-8" />
+              <p className="text-[#64748b] text-lg font-light leading-relaxed mb-10 max-w-lg">
+                Dental visits should be restorative for both your smile and your mind. 
+                We've redesigned the clinical experience to be tranquil and anxiety-free.
               </p>
 
-              <div className="flex flex-col gap-4">
-                {gentlePoints.map((point) => (
-                  <div key={point} className="flex items-start gap-3">
-                    <CheckCircle
-                      size={16}
-                      className="mt-0.5 flex-shrink-0"
-                      style={{ color: "#C9A84C" }}
-                    />
-                    <span
-                      className="text-sm text-gray-700 leading-relaxed"
-                      style={{ fontFamily: "'Poppins', sans-serif" }}
+              <div className="space-y-4 mb-12">
+                {gentlePoints.map((point, idx) => (
+                  <div key={idx} className="flex items-center gap-4 group">
+                    <div
+                      className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                      style={{ background: "rgba(14,165,233,0.1)", border: "1px solid rgba(14,165,233,0.25)" }}
                     >
+                      <Heart size={12} className="text-sky" fill="currentColor" />
+                    </div>
+                    <span className="text-sm font-medium text-navy/65 group-hover:text-navy transition-colors">
                       {point}
                     </span>
                   </div>
                 ))}
               </div>
-            </div>
+
+              <Link href="/contact">
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="btn-primary"
+                >
+                  Experience the Difference
+                </motion.button>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

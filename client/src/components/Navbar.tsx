@@ -1,115 +1,95 @@
-/**
- * ASTHETIK DENTAL — Navbar Component
- * Design: Sticky top nav, deep navy bg, gold CTA button
- * Smooth scroll to sections, mobile hamburger menu
- */
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Phone, Calendar } from "lucide-react";
+import { Link, useLocation } from "wouter";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Treatments", href: "#treatments" },
-  { label: "Technology", href: "#technology" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
+  { label: "Our Story", href: "/about" },
+  { label: "Treatments", href: "/treatments" },
+  { label: "Innovation", href: "/technology" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => setIsScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  }, [location]);
+
+  const navBg = "bg-white border-b border-[#E8E5DF] shadow-[0_2px_24px_rgba(12,27,46,0.06)]";
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "nav-scrolled bg-white/95 backdrop-blur-md" : "bg-white"
-      } border-b border-gray-100`}
-    >
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${navBg}`}>
       <div className="container">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <button
-            onClick={() => handleNavClick("#home")}
-            className="flex items-center gap-3 group"
-          >
-            <img 
-              src="/logo.png" 
-              alt="Asthetik Dental & Implant Centre" 
-              className="h-12 md:h-16 w-auto object-contain"
-              onError={(e) => {
-                // Fallback if image fails to load
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.nextElementSibling?.classList.remove('hidden');
-              }}
-            />
-            <div className="hidden text-left">
-              <div
-                className="font-bold text-sm md:text-base leading-tight"
-                style={{ fontFamily: "'Playfair Display', serif", color: "#0B1F3A" }}
-              >
-                Asthetik Dental
-              </div>
-              <div className="text-xs" style={{ color: "#C9A84C" }}>
-                &amp; Implant Centre
-              </div>
+        <div className="flex items-center justify-between transition-all duration-500 py-4">
+          
+          {/* Brand */}
+          <Link href="/">
+            <div className="group cursor-pointer">
+              <img
+                src="/logo.png"
+                alt="Asthetik Dental"
+                className="h-14 w-auto transition-all duration-300 group-hover:opacity-80"
+              />
             </div>
-          </button>
+          </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-sm font-medium text-navy/80 hover:text-navy transition-colors duration-200 relative group"
-                style={{ fontFamily: "'Poppins', sans-serif", color: "#0B1F3A" }}
-              >
-                {link.label}
-                <span
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
-                  style={{ backgroundColor: "#C9A84C" }}
-                />
-              </button>
-            ))}
+          <div className="hidden lg:flex items-center gap-10">
+            {navLinks.map((link) => {
+              const isActive = location === link.href;
+              return (
+                <Link key={link.href} href={link.href}>
+                  <button
+                    className={`relative text-[11px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 group ${
+                      isActive ? "text-sky" : "text-navy/60 hover:text-navy"
+                    }`}
+                  >
+                    {link.label}
+                    <span
+                      className={`absolute -bottom-1.5 left-0 h-px bg-sky transition-all duration-300 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
+                  </button>
+                </Link>
+              );
+            })}
           </div>
 
-          {/* CTA + Mobile Toggle */}
-          <div className="flex items-center gap-3">
+          {/* Actions */}
+          <div className="flex items-center gap-4">
             <a
-              href="tel:+92-XXX-XXXXXXX"
-              className="hidden md:flex items-center gap-2 text-sm text-navy/70 hover:text-navy transition-colors"
-              style={{ color: "#0B1F3A" }}
+              href="tel:+923332130700"
+              className="hidden xl:flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.1em] transition-all text-navy/50 hover:text-navy"
             >
-              <Phone size={14} />
-              <span style={{ fontFamily: "'Poppins', sans-serif" }}>Call Us</span>
+              <Phone size={14} className="text-sky" />
+              Direct Line
             </a>
+
+            <Link href="/contact">
+              <button
+                className="hidden md:flex items-center gap-2 px-6 py-3 rounded-full text-[11px] font-semibold uppercase tracking-[0.1em] transition-all duration-300 bg-navy text-white hover:bg-sky shadow-md shadow-navy/15"
+              >
+                <Calendar size={13} />
+                Book Consult
+              </button>
+            </Link>
+
+            {/* Mobile toggle */}
             <button
-              onClick={() => handleNavClick("#booking")}
-              className="hidden md:block px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-sm"
-              style={{
-                backgroundColor: "#C9A84C",
-                color: "white",
-                fontFamily: "'Poppins', sans-serif",
-              }}
-            >
-              Book Appointment
-            </button>
-            <button
-              className="lg:hidden text-navy p-2"
               onClick={() => setMobileOpen(!mobileOpen)}
-              style={{ color: "#0B1F3A" }}
+              className="lg:hidden p-2.5 rounded-xl transition-all bg-navy/5 text-navy"
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -118,36 +98,39 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {mobileOpen && (
-        <div
-          className="lg:hidden border-t bg-white"
-          style={{ borderColor: "#f3f4f6" }}
-        >
-          <div className="container py-4 flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-left py-3 px-4 text-navy/80 hover:text-navy hover:bg-gray-50 rounded-lg transition-colors text-sm font-medium"
-                style={{ fontFamily: "'Poppins', sans-serif", color: "#0B1F3A" }}
-              >
-                {link.label}
-              </button>
-            ))}
-            <button
-              onClick={() => handleNavClick("#booking")}
-              className="mt-3 py-3 text-sm font-semibold rounded-full transition-all"
-              style={{
-                backgroundColor: "#C9A84C",
-                color: "white",
-                fontFamily: "'Poppins', sans-serif",
-              }}
-            >
-              Book Appointment
-            </button>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            className="absolute top-full left-0 w-full bg-white border-b border-[#E8E5DF] shadow-xl lg:hidden"
+          >
+            <div className="container py-8 flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  <button
+                    onClick={() => setMobileOpen(false)}
+                    className={`text-left text-base font-semibold uppercase tracking-wider pb-4 border-b border-navy/5 w-full ${
+                      location === link.href ? "text-sky" : "text-navy"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                </Link>
+              ))}
+              <Link href="/contact">
+                <button
+                  onClick={() => setMobileOpen(false)}
+                  className="btn-primary w-full justify-center"
+                >
+                  Book Consultation
+                </button>
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

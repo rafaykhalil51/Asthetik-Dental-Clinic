@@ -53,7 +53,7 @@ export default function WhyTrustSection() {
                 className="text-white/70 mb-8 leading-relaxed"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
-                We combine international training with compassionate, patient-centred care to deliver outcomes that exceed expectations — every single time.
+                We combine international training with compassionate, patient-centred care to deliver outcomes that consistently exceed expectations, every single time.
               </p>
 
               <div className="flex flex-col gap-4">

@@ -1,52 +1,50 @@
-/**
- * ASTHETIK DENTAL — Home Page
- * Assembles all 15 sections in order
- * Design: Clinical Luxury — Navy/Gold/White palette, Playfair Display + Poppins
- */
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import TrustSection from "@/components/TrustSection";
-import WhyTrustSection from "@/components/WhyTrustSection";
-import TechnologySection from "@/components/TechnologySection";
+import TrustMarquee from "@/components/TrustMarquee";
+import StepsSection from "@/components/StepsSection";
 import TreatmentsSection from "@/components/TreatmentsSection";
+import BeforeAfterSection from "@/components/BeforeAfterSection";
 import AboutSection from "@/components/AboutSection";
+import TechnologySection from "@/components/TechnologySection";
 import StandardsSection from "@/components/StandardsSection";
 import LocationSection from "@/components/LocationSection";
-import BrandsStrip from "@/components/BrandsStrip";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Sticky Navigation */}
       <Navbar />
 
-      {/* 1. Hero / Banner Section */}
+      {/* 1. Vibrant Hero Section */}
       <HeroSection />
 
-      {/* 2. Trust Badges + 3. Google Reviews */}
-      <TrustSection />
+      {/* 2. Trust Marquee with Ratings */}
+      <TrustMarquee />
 
-      {/* 4. Why Patients Trust Us + Brand Logos */}
-      <WhyTrustSection />
+      {/* 3. Steps to Care */}
+      <StepsSection />
 
-      {/* 5. Smart Technology + 6. Gentle Dentistry */}
-      <TechnologySection />
-
-      {/* 7. Services / Treatments */}
+      {/* 4. Comprehensive Treatments */}
       <TreatmentsSection />
 
-      {/* 8. About / Lead Doctor + 9. Doctor Team */}
+      {/* 5. Results (Before/After) */}
+      <BeforeAfterSection />
+
+      {/* 6. Specialist Team */}
       <AboutSection />
 
-      {/* 10. Clinical Standards + 11. Testimonials */}
+      {/* 7. Smart Technology Showcase */}
+      <TechnologySection />
+
+      {/* 8. Clinical Standards */}
       <StandardsSection />
 
-      {/* 12. Location + 13. Book Consultation CTA + Booking Form */}
+      {/* 9. Location & Directions */}
       <LocationSection />
 
-      {/* 15. Footer */}
+      {/* 10. Luxury Footer */}
       <Footer />
 
       {/* WhatsApp Floating Button */}

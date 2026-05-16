@@ -1,34 +1,21 @@
-/**
- * ASTHETIK DENTAL — Clinical Standards Table + Testimonials
- * Design: Clean table on white bg + navy testimonials with star ratings
- */
-import { Star, Quote } from "lucide-react";
+import { motion } from "framer-motion";
+import { Star, Quote, ShieldCheck, Zap, FileText } from "lucide-react";
 
 const clinicalStandards = [
   {
-    standard: "Treatment Planning",
-    application:
-      "Comprehensive personalised planning sessions before every procedure — no surprises, no shortcuts.",
+    icon: FileText,
+    title: "Precision Diagnostics",
+    detail: "Every treatment starts with a digital workflow and CBCT 3D planning.",
   },
   {
-    standard: "Infection Control",
-    application:
-      "Full sterilisation protocols meeting international standards, with single-use instruments where applicable.",
+    icon: ShieldCheck,
+    title: "Sterilization Mastery",
+    detail: "International-grade infection control protocols beyond standard requirements.",
   },
   {
-    standard: "Patient Communication",
-    application:
-      "Transparent treatment discussion and cost explanation upfront — you always know what to expect.",
-  },
-  {
-    standard: "Evidence-Based Diagnostics",
-    application:
-      "All diagnoses are supported by clinical evidence and advanced imaging before any treatment begins.",
-  },
-  {
-    standard: "Follow-Up & Continuity",
-    application:
-      "Scheduled follow-up appointments and ongoing monitoring to ensure optimal long-term outcomes.",
+    icon: Zap,
+    title: "Minimally Invasive",
+    detail: "Preserving natural tooth structure using advanced laser and ultrasonic tools.",
   },
 ];
 
@@ -36,178 +23,201 @@ const testimonials = [
   {
     name: "Fatima A.",
     rating: 5,
-    text: "I had been avoiding the dentist for years due to anxiety. The team at Asthetik Dental completely changed my experience — they were patient, gentle, and explained every step. My smile makeover results are beyond what I imagined.",
-    treatment: "Smile Makeover",
+    text: "The clinical precision here is unmatched. My smile makeover was completely digital, and the results are perfectly natural.",
+    treatment: "Full Smile Design",
+    initials: "FA",
   },
   {
     name: "Hassan Z.",
     rating: 5,
-    text: "Had two implants done here and the experience was exceptional. The CBCT scan gave me confidence that the planning was precise. Zero pain during the procedure and the healing was smooth.",
-    treatment: "Dental Implants",
+    text: "Zero-discomfort implants. The technology they use for planning makes the actual surgery feel effortless.",
+    treatment: "Digital Implants",
+    initials: "HZ",
   },
   {
     name: "Maryam S.",
     rating: 5,
-    text: "My daughter was terrified of dentists but the paediatric team here won her over completely. She now looks forward to her check-ups! The clinic is clean, modern, and the staff are incredibly warm.",
-    treatment: "Paediatric Dentistry",
+    text: "They transformed my dental anxiety into a relaxing experience. The best clinical team in Karachi.",
+    treatment: "Cosmetic Care",
+    initials: "MS",
   },
 ];
 
-function StarRating({ count }: { count: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} size={14} fill="#C9A84C" stroke="none" />
-      ))}
-    </div>
-  );
-}
-
 export default function StandardsSection() {
   return (
-    <>
-      {/* Clinical Standards Table */}
-      <section id="standards" className="py-20 bg-white">
+    <div>
+      {/* ── Clinical Standards: White ── */}
+      <section className="py-32 bg-white overflow-hidden">
         <div className="container">
-          <div className="text-center mb-12">
-            <div
-              className="inline-block text-xs font-semibold tracking-widest uppercase mb-3"
-              style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            
+            {/* Left */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
             >
-              Clinical Excellence
-            </div>
-            <h2
-              className="text-3xl md:text-4xl font-bold"
-              style={{ color: "#0B1F3A", fontFamily: "'Playfair Display', serif" }}
-            >
-              Our Clinical Standards
-            </h2>
-            <p
-              className="text-gray-500 mt-3 max-w-lg mx-auto text-sm"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              Every treatment at Asthetik Dental is guided by clearly defined clinical protocols and evidence-based dentistry.
-            </p>
-          </div>
+              <div className="eyebrow text-sky mb-5">
+                <div className="w-6 h-px bg-sky" />
+                Clinical Integrity
+              </div>
+              <h2 className="display-heading text-4xl md:text-5xl text-navy mb-4">
+                World-Class
+              </h2>
+              <h2 className="display-heading text-4xl md:text-5xl mb-8 text-sky" style={{ fontStyle: "italic" }}>
+                Clinical Standards.
+              </h2>
+              <div className="divider-gold mb-8" />
+              <p className="text-[#64748b] text-lg font-light leading-relaxed mb-12 max-w-lg">
+                We operate under strict international protocols to ensure every clinical outcome is 
+                a masterpiece of health and aesthetics.
+              </p>
 
-          <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden border shadow-sm" style={{ borderColor: "#e8e0d0" }}>
-            {/* Table Header */}
-            <div
-              className="grid grid-cols-2 px-6 py-4"
-              style={{ backgroundColor: "#0B1F3A" }}
-            >
-              <div
-                className="text-sm font-semibold text-white"
-                style={{ fontFamily: "'Poppins', sans-serif" }}
-              >
-                Clinical Standard
+              <div className="space-y-4">
+                {clinicalStandards.map((s, idx) => {
+                  const Icon = s.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="card-premium flex gap-5 p-6 group hover:border-sky/30"
+                    >
+                      <div
+                        className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                        style={{ background: "rgba(14,165,233,0.08)", border: "1px solid rgba(14,165,233,0.15)" }}
+                      >
+                        <Icon size={18} className="text-sky" />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-semibold text-navy mb-1" style={{ fontFamily: "'DM Serif Display', serif" }}>
+                          {s.title}
+                        </h4>
+                        <p className="text-sm text-[#64748b] font-light">{s.detail}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-              <div
-                className="text-sm font-semibold"
-                style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
-              >
-                How It's Applied at Asthetik Dental
-              </div>
-            </div>
+            </motion.div>
 
-            {/* Table Rows */}
-            {clinicalStandards.map((row, idx) => (
+            {/* Right: Stats panel */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              {/* Background glow */}
+              <div className="absolute -inset-4 rounded-[3rem]"
+                style={{ background: "radial-gradient(circle at 40% 40%, rgba(14,165,233,0.07), transparent 70%)" }} />
+
               <div
-                key={row.standard}
-                className="grid grid-cols-2 px-6 py-4 border-t"
-                style={{
-                  borderColor: "#e8e0d0",
-                  backgroundColor: idx % 2 === 0 ? "white" : "#F8F6F0",
-                }}
+                className="relative rounded-[2.5rem] overflow-hidden shadow-[0_24px_80px_rgba(12,27,46,0.1)] p-14 flex flex-col justify-between min-h-[460px]"
+                style={{ background: "#0C1B2E", border: "1px solid rgba(255,255,255,0.05)" }}
               >
-                <div
-                  className="text-sm font-semibold pr-4"
-                  style={{ color: "#0B1F3A", fontFamily: "'Poppins', sans-serif" }}
-                >
-                  {row.standard}
+                <div className="absolute inset-0 opacity-10"
+                  style={{ background: "radial-gradient(circle at 30% 30%, #0EA5E9, transparent 60%), radial-gradient(circle at 70% 70%, #C9A84C, transparent 60%)" }} />
+
+                <div className="relative z-10">
+                  <div
+                    className="text-6xl font-bold mb-2"
+                    style={{ color: "#0EA5E9", fontFamily: "'DM Serif Display', serif" }}
+                  >
+                    99.8%
+                  </div>
+                  <div className="text-white/35 text-[10px] uppercase tracking-[0.2em] font-bold">
+                    Successful Clinical Outcomes
+                  </div>
                 </div>
-                <div
-                  className="text-sm text-gray-600 leading-relaxed"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  {row.application}
+
+                <div className="relative z-10 grid grid-cols-2 gap-8 mt-12">
+                  {[
+                    { val: "15k+", label: "Smiles Designed" },
+                    { val: "10+", label: "Years of Mastery" },
+                    { val: "100%", label: "Digital Workflow" },
+                    { val: "Intl.", label: "Protocols Met" },
+                  ].map((stat, i) => (
+                    <div key={i}>
+                      <div className="text-white text-3xl font-bold mb-1" style={{ fontFamily: "'DM Serif Display', serif" }}>
+                        {stat.val}
+                      </div>
+                      <div className="text-white/30 text-[9px] uppercase font-bold tracking-widest">
+                        {stat.label}
+                      </div>
+                    </div>
+                  ))}
                 </div>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 w-full h-1"
+                  style={{ background: "linear-gradient(to right, #0EA5E9, #C9A84C)" }} />
               </div>
-            ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Gold Divider */}
-      <div className="gold-divider" />
-
-      {/* Patient Testimonials */}
-      <section
-        id="testimonials"
-        className="py-20"
-        style={{ backgroundColor: "#0B1F3A" }}
-      >
+      {/* ── Testimonials: Warm Muted ── */}
+      <section id="testimonials" className="py-32 bg-warm-muted overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px" style={{ background: "linear-gradient(to right, transparent, #D0CCC3, transparent)" }} />
         <div className="container">
-          <div className="text-center mb-12">
-            <div
-              className="inline-block text-xs font-semibold tracking-widest uppercase mb-3"
-              style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
-            >
+          <div className="text-center mb-20">
+            <div className="eyebrow justify-center text-sky mb-5">
+              <div className="w-6 h-px bg-sky" />
               Patient Stories
+              <div className="w-6 h-px bg-sky" />
             </div>
-            <h2
-              className="text-3xl md:text-4xl font-bold text-white"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              Patients Trust Us with
-              <br />
-              <span style={{ color: "#C9A84C" }}>Complex Cases</span>
-            </h2>
+            <h3 className="display-heading text-4xl md:text-5xl text-navy">
+              Clinical Trust.{" "}
+              <span className="text-sky" style={{ fontStyle: "italic" }}>Real Stories.</span>
+            </h3>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((t, idx) => (
-              <div
-                key={t.name}
-                className={`p-7 rounded-2xl border relative ${idx === 1 ? "md:-mt-4 md:mb-4" : ""}`}
-                style={{
-                  backgroundColor: idx === 1 ? "rgba(201,168,76,0.08)" : "rgba(255,255,255,0.04)",
-                  borderColor: idx === 1 ? "rgba(201,168,76,0.4)" : "rgba(255,255,255,0.08)",
-                }}
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.12 }}
+                whileHover={{ y: -8 }}
+                className="card-premium p-10 relative group"
+                style={{ background: "#FFFFFF" }}
               >
                 <Quote
-                  size={28}
-                  className="mb-4 opacity-30"
-                  style={{ color: "#C9A84C" }}
+                  size={36}
+                  className="absolute top-8 right-8 transition-colors duration-300 group-hover:opacity-100"
+                  style={{ color: "rgba(201,168,76,0.2)" }}
                 />
-                <p
-                  className="text-sm text-white/80 leading-relaxed mb-6"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
+
+                {/* Stars */}
+                <div className="flex gap-1 mb-6">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Star key={i} size={13} fill="#C9A84C" stroke="none" />
+                  ))}
+                </div>
+
+                <p className="text-navy/65 text-base font-light leading-relaxed mb-8" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   "{t.text}"
                 </p>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div
-                      className="font-semibold text-sm text-white"
-                      style={{ fontFamily: "'Poppins', sans-serif" }}
-                    >
-                      {t.name}
-                    </div>
-                    <div
-                      className="text-xs mt-0.5"
-                      style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
-                    >
-                      {t.treatment}
-                    </div>
+
+                <div className="flex items-center gap-4 pt-6" style={{ borderTop: "1px solid #E8E5DF" }}>
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
+                    style={{ background: "linear-gradient(135deg, #0EA5E9, #0C1B2E)" }}
+                  >
+                    {t.initials}
                   </div>
-                  <StarRating count={t.rating} />
+                  <div>
+                    <h5 className="text-sm font-semibold text-navy">{t.name}</h5>
+                    <p className="text-[10px] text-sky uppercase tracking-widest font-bold">{t.treatment}</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

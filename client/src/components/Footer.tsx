@@ -1,226 +1,156 @@
-/**
- * ASTHETIK DENTAL — Footer
- * Design: Deep navy bg, gold accents, links, social icons, copyright
- */
 import { MapPin, Phone, MessageCircle, Facebook, Instagram } from "lucide-react";
+import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 const footerLinks = {
   clinic: [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
-    { label: "Our Team", href: "#team" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Find Us", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "Our Story", href: "/about" },
+    { label: "Treatments", href: "/treatments" },
+    { label: "Innovation", href: "/technology" },
+    { label: "Contact Us", href: "/contact" },
   ],
   treatments: [
-    { label: "General Dentistry", href: "#treatments" },
-    { label: "Dental Implants", href: "#treatments" },
-    { label: "Orthodontics / Braces", href: "#treatments" },
-    { label: "Teeth Whitening", href: "#treatments" },
-    { label: "Cosmetic Dentistry", href: "#treatments" },
-    { label: "Paediatric Dentistry", href: "#treatments" },
+    { label: "Dental Implants", href: "/treatments" },
+    { label: "Smile Makeover", href: "/treatments" },
+    { label: "Orthodontics", href: "/treatments" },
+    { label: "Teeth Whitening", href: "/treatments" },
+    { label: "Laser Dentistry", href: "/technology" },
+    { label: "Paediatric Care", href: "/treatments" },
   ],
 };
 
 export default function Footer() {
-  const handleNavClick = (href: string) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <footer style={{ backgroundColor: "#060f1e" }}>
-      {/* Main Footer */}
-      <div className="container py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-4 mb-5">
-              <div>
-                <div
-                  className="font-bold text-xl text-white leading-none mb-1"
-                  style={{ 
-                    fontFamily: "'Playfair Display', serif", 
-                    letterSpacing: "1px",
-                    background: "linear-gradient(to right, #C9A84C, #ffffff)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    textShadow: "0 2px 10px rgba(201,168,76,0.3)"
+    <footer className="bg-white" style={{ borderTop: "1px solid #E8E5DF" }}>
+      {/* Main footer body */}
+      <div className="container py-20">
+        <div className="grid lg:grid-cols-12 gap-16">
+          
+          {/* Brand */}
+          <div className="lg:col-span-5">
+            <Link href="/">
+              <div className="mb-8 cursor-pointer group w-fit">
+                <img
+                  src="/logo.png"
+                  alt="Asthetik Dental Logo"
+                  className="h-16 w-auto group-hover:opacity-80 transition-all"
+                />
+              </div>
+            </Link>
+
+            <p className="text-[#64748b] text-base font-light leading-relaxed mb-8 max-w-xs">
+              Crafting world-class smiles through cinematic precision and contemporary clinical mastery in DHA Karachi.
+            </p>
+
+            {/* Social */}
+            <div className="flex gap-3">
+              {[
+                { Icon: Facebook, href: "#" },
+                { Icon: Instagram, href: "#" },
+                { Icon: MessageCircle, href: "https://wa.me/923332130700" },
+              ].map(({ Icon, href }, idx) => (
+                <motion.a
+                  key={idx}
+                  href={href}
+                  whileHover={{ y: -3, borderColor: "rgba(14,165,233,0.5)" }}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center transition-all"
+                  style={{
+                    border: "1px solid #E8E5DF",
+                    color: "#94A3B8",
+                    background: "#FAFAF8",
                   }}
                 >
-                  Asthetik Dental
-                </div>
-                <div
-                  className="text-[10px] uppercase font-bold tracking-[4px]"
-                  style={{ color: "#C9A84C", opacity: 0.9, fontFamily: "'Poppins', sans-serif" }}
-                >
-                  and Implant Centre
-                </div>
-              </div>
-              <img 
-                src="/logo.png" 
-                alt="Asthetik Dental" 
-                className="h-12 w-auto object-contain bg-white rounded-lg p-1.5 shadow-lg shadow-white/5"
-              />
-            </div>
-            <p
-              className="text-xs text-white/50 leading-relaxed mb-5"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              Excellence in Contemporary Dental Practice. Serving DHA, Karachi with world-class dental care.
-            </p>
-            {/* Social Icons */}
-            <div className="flex gap-3">
-              <a
-                href="#"
-                className="w-9 h-9 rounded-full flex items-center justify-center border transition-all hover:border-yellow-400 hover:text-yellow-400"
-                style={{ borderColor: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.5)" }}
-                aria-label="Facebook"
-              >
-                <Facebook size={15} />
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 rounded-full flex items-center justify-center border transition-all hover:border-yellow-400 hover:text-yellow-400"
-                style={{ borderColor: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.5)" }}
-                aria-label="Instagram"
-              >
-                <Instagram size={15} />
-              </a>
-              <a
-                href="https://wa.me/92XXXXXXXXXX"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full flex items-center justify-center border transition-all hover:border-green-400 hover:text-green-400"
-                style={{ borderColor: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.5)" }}
-                aria-label="WhatsApp"
-              >
-                <MessageCircle size={15} />
-              </a>
+                  <Icon size={17} />
+                </motion.a>
+              ))}
             </div>
           </div>
 
-          {/* Clinic Links */}
-          <div>
-            <h4
-              className="text-sm font-semibold text-white mb-4"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              Clinic
-            </h4>
-            <div className="flex flex-col gap-2">
+          {/* Clinic Nav */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-navy mb-6">Clinic</h4>
+            <ul className="space-y-3">
               {footerLinks.clinic.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-left text-xs text-white/50 hover:text-white transition-colors"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  {link.label}
-                </button>
+                <li key={link.label}>
+                  <Link href={link.href}>
+                    <button className="text-sm text-[#64748b] hover:text-sky transition-colors font-light">
+                      {link.label}
+                    </button>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          {/* Treatments Links */}
-          <div>
-            <h4
-              className="text-sm font-semibold text-white mb-4"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              Treatments
-            </h4>
-            <div className="flex flex-col gap-2">
+          {/* Specialties */}
+          <div className="lg:col-span-2">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-navy mb-6">Specialties</h4>
+            <ul className="space-y-3">
               {footerLinks.treatments.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-left text-xs text-white/50 hover:text-white transition-colors"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  {link.label}
-                </button>
+                <li key={link.label}>
+                  <Link href={link.href}>
+                    <button className="text-sm text-[#64748b] hover:text-sky transition-colors font-light text-left">
+                      {link.label}
+                    </button>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h4
-              className="text-sm font-semibold text-white mb-4"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              Contact
-            </h4>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-start gap-2.5">
-                <MapPin size={14} className="mt-0.5 flex-shrink-0" style={{ color: "#C9A84C" }} />
-                <span
-                  className="text-xs text-white/50 leading-relaxed"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
+          {/* Contact */}
+          <div className="lg:col-span-3">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-navy mb-6">Clinical HQ</h4>
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
+                  style={{ background: "rgba(14,165,233,0.08)", border: "1px solid rgba(14,165,233,0.15)" }}
                 >
-                  Plot 11-C Lane 4, Bukhari Commercial Area, Phase 6, DHA, Karachi, Pakistan
-                </span>
+                  <MapPin size={15} className="text-sky" />
+                </div>
+                <p className="text-sm text-[#64748b] font-light leading-relaxed">
+                  Plot 11-C Lane 4, Bukhari Commercial Area,<br />Phase 6, DHA, Karachi.
+                </p>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone size={14} className="flex-shrink-0" style={{ color: "#C9A84C" }} />
-                <span
-                  className="text-xs text-white/50"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
+              <div className="flex gap-4 items-center">
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: "rgba(14,165,233,0.08)", border: "1px solid rgba(14,165,233,0.15)" }}
                 >
-                  +92-XXX-XXXXXXX
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <MessageCircle size={14} className="flex-shrink-0" style={{ color: "#C9A84C" }} />
-                <a
-                  href="https://wa.me/92XXXXXXXXXX"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs hover:text-white transition-colors"
-                  style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
-                >
-                  WhatsApp Us
-                </a>
-              </div>
-              <div
-                className="text-xs text-white/40 leading-relaxed"
-                style={{ fontFamily: "'Poppins', sans-serif" }}
-              >
-                Mon–Sat: 10:00 AM – 9:00 PM
-                <br />
-                Sunday: By Appointment
+                  <Phone size={15} className="text-sky" />
+                </div>
+                <div>
+                  <p className="text-sm text-[#64748b] font-light">+92 333 2130700</p>
+                  <p className="text-[10px] text-sky font-bold uppercase tracking-widest mt-0.5">Available 24/7</p>
+                </div>
               </div>
             </div>
+
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="btn-primary mt-8 text-xs"
+              >
+                Book Consultation
+              </motion.button>
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Gold Divider */}
-      <div className="gold-divider opacity-30" />
-
-      {/* Copyright Bar */}
-      <div className="container py-5">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p
-            className="text-xs text-white/30"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            © 2025 Asthetik Dental and Implant Centre. All Rights Reserved.
+      {/* Bottom bar */}
+      <div className="border-t" style={{ borderColor: "#E8E5DF" }}>
+        <div className="container py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[11px] text-[#94A3B8] uppercase tracking-widest font-medium">
+            © 2026 Asthetik Dental and Implant. Precision Clinical Care.
           </p>
-          <div className="flex gap-5">
-            <button
-              className="text-xs text-white/30 hover:text-white/60 transition-colors"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              Privacy Policy
-            </button>
-            <button
-              className="text-xs text-white/30 hover:text-white/60 transition-colors"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              Terms of Service
-            </button>
+          <div className="flex gap-8 text-[11px] text-[#94A3B8] uppercase tracking-widest font-medium">
+            <Link href="/privacy"><span className="hover:text-navy transition-colors cursor-pointer">Privacy</span></Link>
+            <Link href="/terms"><span className="hover:text-navy transition-colors cursor-pointer">Terms</span></Link>
+            <Link href="/accessibility"><span className="hover:text-navy transition-colors cursor-pointer">Accessibility</span></Link>
           </div>
         </div>
       </div>

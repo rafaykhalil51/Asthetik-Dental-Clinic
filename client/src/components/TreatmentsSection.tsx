@@ -1,156 +1,174 @@
-/**
- * ASTHETIK DENTAL — Treatments Section
- * Design: Navy bg, 8 treatment cards with images overlaid with text (KL Dental style)
- */
+import { motion } from "framer-motion";
+import { ArrowRight, Shield, Activity, Sparkle, HeartPulse, Stethoscope, CheckCircle } from "lucide-react";
+import { Link } from "wouter";
 
 const treatments = [
   {
     title: "General Dentistry",
-    description:
-      "Comprehensive check-ups, fillings, and preventive care to maintain your oral health and catch issues early.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/treatment-general-dentistry-cAUqC33LTHT5FjxzdtEsk4.webp",
-    href: "#booking",
+    description: "Keep your teeth healthy with routine checkups and cleanings.",
+    icon: Stethoscope,
+    color: "from-blue-500/10 to-blue-500/5",
+    iconBg: "bg-blue-50 text-blue-600",
+    accent: "#3B82F6",
   },
   {
-    title: "Dental Implants",
-    description:
-      "Permanent, natural-looking tooth replacements that restore function and aesthetics with long-lasting results.",
-    image: "/dental-implant.jpg",
-    href: "#booking",
+    title: "Restorative Dentistry",
+    description: "Repair damaged teeth with crowns, bridges, and implants.",
+    icon: Activity,
+    color: "from-sky-500/10 to-sky-500/5",
+    iconBg: "bg-sky-50 text-sky-600",
+    accent: "#0EA5E9",
   },
   {
-    title: "Orthodontics / Braces",
-    description:
-      "Correct crooked teeth and improve your bite with traditional braces or modern clear aligner systems.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/treatment-orthodontics-BomJZDyXR2i4YDR6n4ZVW3.webp",
-    href: "#booking",
+    title: "Cosmetic Dentistry",
+    description: "Enhance your smile with whitening, veneers, and more.",
+    icon: Sparkle,
+    color: "from-indigo-500/10 to-indigo-500/5",
+    iconBg: "bg-indigo-50 text-indigo-600",
+    accent: "#6366F1",
   },
   {
-    title: "Teeth Whitening",
-    description:
-      "Professional-grade whitening treatments that deliver dramatic, safe results for a brighter, more confident smile.",
-    image: "/teeth-whitening.jpg",
-    href: "#booking",
-  },
-  {
-    title: "Scaling & Polishing",
-    description:
-      "Remove plaque, calculus, and surface stains to keep your teeth and gums healthy and looking their best.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/treatment-scaling-polishing-cuXNoZ7XGKWS74iVd9ggCP.webp",
-    href: "#booking",
-  },
-  {
-    title: "Wisdom Tooth Extraction",
-    description:
-      "Safe, comfortable removal of problematic wisdom teeth to prevent infection, crowding, and future complications.",
-    image: "/wisdom-tooth.jpg",
-    href: "#booking",
-  },
-  {
-    title: "Paediatric Dentistry",
-    description:
-      "Gentle, child-friendly dental care that builds positive habits and healthy smiles from an early age.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/treatment-pediatric-7U7NYKsE2Jg7sjpZpMv98j.webp",
-    href: "#booking",
-  },
-  {
-    title: "Cosmetic / Smile Makeover",
-    description:
-      "Transform your smile with veneers, bonding, and comprehensive cosmetic treatments tailored to your goals.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/treatment-cosmetic-smile-eE2VqVVgybcZ8KMx5XiP8E.webp",
-    href: "#booking",
+    title: "Pediatric Dentistry",
+    description: "Specialized care for children's unique dental needs.",
+    icon: HeartPulse,
+    color: "from-emerald-500/10 to-emerald-500/5",
+    iconBg: "bg-emerald-50 text-emerald-600",
+    accent: "#10B981",
   },
 ];
 
+const features = [
+  "International-grade equipment",
+  "100% sterilized environment",
+  "Painless procedures guaranteed",
+  "Transparent treatment pricing",
+];
+
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+const item = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+};
+
 export default function TreatmentsSection() {
-  const scrollToBooking = () => {
-    document.querySelector("#booking")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section
-      id="treatments"
-      className="py-20"
-      style={{ backgroundColor: "#0B1F3A" }}
-    >
-      <div className="container">
-        {/* Header */}
-        <div className="grid lg:grid-cols-2 gap-8 items-end mb-12">
-          <div>
-            <div
-              className="inline-block text-xs font-semibold tracking-widest uppercase mb-3"
-              style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
-            >
-              Treatments
-            </div>
-            <h2
-              className="text-3xl md:text-4xl font-bold text-white"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              Care Tailored to
-              <br />
-              <span style={{ color: "#C9A84C" }}>Your Needs</span>
-            </h2>
-          </div>
-          <div>
-            <p
-              className="text-white/60 text-sm leading-relaxed mb-4"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              From general check-ups to cosmetic and specialist dental services, we truly master techniques, including for On-Time/ASAP appointments and ensuring optimal dental care.
-            </p>
-            <button
-              onClick={scrollToBooking}
-              className="px-6 py-3 text-sm font-semibold rounded-full border-2 text-white transition-all hover:bg-white/10"
-              style={{
-                borderColor: "#C9A84C",
-                color: "#C9A84C",
-                fontFamily: "'Poppins', sans-serif",
-              }}
-            >
-              View All Treatments
-            </button>
-          </div>
-        </div>
+    <section id="treatments" className="py-28 relative overflow-hidden bg-white">
+      {/* Subtle animated background gradient */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.04]"
+          style={{ background: "radial-gradient(circle, #0EA5E9 0%, transparent 70%)", transform: "translate(30%, -30%)" }} />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-[0.04]"
+          style={{ background: "radial-gradient(circle, #6366F1 0%, transparent 70%)", transform: "translate(-30%, 30%)" }} />
+      </div>
 
-        {/* Treatment Cards Grid with Images */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {treatments.map((treatment) => (
-            <button
-              key={treatment.title}
-              onClick={scrollToBooking}
-              className="relative h-64 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
-              style={{
-                border: "2px dashed rgba(201,168,76,0.3)",
-              }}
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-[1fr_1.6fr] gap-20 items-start">
+
+          {/* Left: Sticky heading */}
+          <div className="lg:sticky lg:top-32">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
             >
-              {/* Background Image */}
-              <img
-                src={treatment.image}
-                alt={treatment.title}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-
-              {/* Text Content - Positioned at Bottom */}
-              <div className="absolute inset-0 flex flex-col justify-end p-5">
-                <h3
-                  className="font-semibold text-sm text-white mb-2 group-hover:text-yellow-300 transition-colors"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  {treatment.title}
-                </h3>
-                <p
-                  className="text-xs text-white/80 leading-relaxed line-clamp-2"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  {treatment.description}
-                </p>
+              <div className="eyebrow mb-6 text-sky">
+                <div className="w-6 h-px bg-sky" />
+                Sustainable Services
               </div>
-            </button>
-          ))}
+              <h2 className="display-heading text-4xl md:text-5xl lg:text-[3.5rem] text-navy mb-6 leading-[1.08]">
+                Comprehensive <br />
+                Dental Care for a{" "}
+                <span className="serif-italic italic text-navy">Healthier Smile</span>
+              </h2>
+              <p className="text-navy/50 text-lg leading-relaxed mb-10">
+                From preventive checkups to advanced cosmetic treatments, our team provides
+                modern dentistry tailored to you.
+              </p>
+
+              <div className="space-y-3 mb-12">
+                {features.map((f, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle size={16} className="text-sky flex-shrink-0" />
+                    <span className="text-navy/65 text-sm font-medium">{f}</span>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="pt-10 border-t border-gray-100">
+                <p className="text-navy/40 text-xs font-bold uppercase tracking-widest mb-4">
+                  Modern Care <span className="italic serif-italic normal-case text-base font-normal text-navy/50 ml-1">Solutions</span>
+                </p>
+                <Link href="/treatments">
+                  <motion.button
+                    whileHover={{ scale: 1.04, x: 4 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="flex items-center gap-3 px-7 py-3.5 rounded-full bg-navy text-white text-xs font-bold uppercase tracking-widest shadow-xl shadow-navy/20"
+                  >
+                    See All Services <ArrowRight size={14} />
+                  </motion.button>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right: Cards */}
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid sm:grid-cols-2 gap-5"
+          >
+            {treatments.map((t, idx) => {
+              const Icon = t.icon;
+              return (
+                <motion.div
+                  key={idx}
+                  variants={item}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className={`p-9 rounded-[2rem] border border-gray-100 bg-gradient-to-br ${t.color} cursor-pointer group relative overflow-hidden`}
+                  style={{ transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)" }}
+                >
+                  {/* Animated glow on hover */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"
+                    style={{ boxShadow: `inset 0 0 40px ${t.accent}15` }}
+                  />
+                  {/* Animated border top */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ background: `linear-gradient(to right, transparent, ${t.accent}, transparent)` }}
+                  />
+
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-10 ${t.iconBg} group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon size={24} />
+                  </div>
+                  <h3 className="text-navy font-bold text-xl mb-3 group-hover:text-sky transition-colors duration-300">
+                    {t.title}
+                  </h3>
+                  <p className="text-navy/50 text-sm leading-relaxed">
+                    {t.description}
+                  </p>
+
+                  <div className="mt-8 flex items-center gap-2 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
+                    style={{ color: t.accent }}>
+                    Learn More <ArrowRight size={12} />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
     </section>
