@@ -111,37 +111,6 @@ export default function WhyTrustSection() {
         </div>
       </section>
 
-      {/* Brand Logos Strip */}
-      <section
-        className="py-10 border-y"
-        style={{ backgroundColor: "#F8F6F0", borderColor: "#e8e0d0" }}
-      >
-        <div className="container">
-          <p
-            className="text-center text-xs font-semibold tracking-widest uppercase mb-6"
-            style={{ color: "#0B1F3A", fontFamily: "'Poppins', sans-serif" }}
-          >
-            Trusted Brands &amp; Partners
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-            {brands.map((brand) => (
-              <div
-                key={brand.name}
-                className="flex items-center justify-center px-5 py-3 rounded-xl border font-bold text-sm transition-all hover:shadow-md"
-                style={{
-                  borderColor: "#d0c8b8",
-                  backgroundColor: "white",
-                  color: "#0B1F3A",
-                  fontFamily: "'Poppins', sans-serif",
-                  minWidth: "100px",
-                }}
-              >
-                {brand.name}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

@@ -288,14 +288,23 @@ export default function LocationSection() {
               {/* Map Embed */}
               <div className="rounded-2xl overflow-hidden shadow-lg mb-6 border" style={{ borderColor: "#e8e0d0" }}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57925.83!2d67.0!3d24.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sDHA%20Karachi%2C%20Karachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1699000000000!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.57!2d67.06!3d24.81!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33c66f7f6368d%3A0xc3c5f590a996f9a0!2sBukhari%20Commercial%20Area%20Phase%206%20Defence%20Housing%20Authority%2C%20Karachi!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
                   width="100%"
-                  height="280"
+                  height="250"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Asthetik Dental Location - DHA Karachi"
+                  title="Asthetik Dental Location - Bukhari Commercial DHA Phase 6"
+                />
+              </div>
+
+              {/* Location Photo */}
+              <div className="rounded-2xl overflow-hidden shadow-md mb-6 border aspect-video" style={{ borderColor: "#e8e0d0" }}>
+                <img 
+                  src="/reception.jpg" 
+                  alt="Asthetik Dental Clinic Reception" 
+                  className="w-full h-full object-cover"
                 />
               </div>
 
@@ -319,15 +328,17 @@ export default function LocationSection() {
                         Asthetik Dental and Implant Centre
                       </div>
                       <div
-                        className="text-xs text-gray-500 mt-0.5"
+                        className="text-xs text-gray-500 mt-0.5 leading-relaxed"
                         style={{ fontFamily: "'Poppins', sans-serif" }}
                       >
-                        DHA Chapter, Defence Housing Authority
+                        Plot 11-C Lane 4, Bukhari Commercial Area
                         <br />
-                        Karachi, Pakistan
+                        Phase 6, DHA, Karachi, 75500, Pakistan
+                        <br />
+                        <span className="text-[10px] opacity-70">Q3V8+GC2 DHA Phase 6</span>
                       </div>
                       <a
-                        href="https://share.google/sSrL2D6kPBB5QOMoN"
+                        href="https://maps.google.com/?q=Asthetik+Dental+Bukhari+Commercial+Phase+6+DHA+Karachi"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xs font-semibold mt-1 inline-block"

@@ -4,13 +4,13 @@
  */
 import { CheckCircle } from "lucide-react";
 
-const DOCTOR_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/doctor-profile-6a3ZSRWzsqUWB99wLdBXhv.webp";
+const DOCTOR_IMG = "/doctor.png";
 
 const doctorCredentials = [
-  "Specialist in Implantology & Oral Surgery",
-  "Advanced Cosmetic Procedures",
+  "BDS, Specialist in Implantology & Oral Surgery",
+  "Advanced Cosmetic & Restorative Procedures",
   "International Training & Accreditation",
-  "Trusted by Thousands of Patients",
+  "Trusted by Thousands of Patients in DHA",
 ];
 
 
@@ -42,7 +42,7 @@ export default function AboutSection() {
                 className="text-gray-600 mb-8 leading-relaxed text-sm"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
-                Under expert leadership, Asthetik Dental and Implant Centre combines advanced dental knowledge with compassionate care. Our clinical team is dedicated to outlining treatment options, monitoring patient health, and maintaining the highest standards of clinical dental practice.
+                Under the expert leadership of Dr. Zaheer Hussain, Asthetik Dental and Implant Centre combines advanced dental knowledge with compassionate care. Our clinical team is dedicated to outlining treatment options, monitoring patient health, and maintaining the highest standards of clinical dental practice.
               </p>
 
               {/* Doctor Card */}
@@ -52,7 +52,7 @@ export default function AboutSection() {
               >
                 <img
                   src={DOCTOR_IMG}
-                  alt="Lead Dentist at Asthetik Dental"
+                  alt="Dr. Zaheer Hussain"
                   className="w-20 h-20 rounded-xl object-cover flex-shrink-0"
                 />
                 <div>
@@ -60,13 +60,13 @@ export default function AboutSection() {
                     className="font-bold text-base mb-0.5"
                     style={{ color: "#0B1F3A", fontFamily: "'Playfair Display', serif" }}
                   >
-                    Dr. [Lead Dentist Name]
+                    Dr. Zaheer Hussain
                   </div>
                   <div
                     className="text-xs mb-3"
                     style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
                   >
-                    BDS, FCPS — Clinical Director
+                    CEO & Clinical Director
                   </div>
                   <div className="flex flex-col gap-2">
                     {doctorCredentials.map((cred) => (

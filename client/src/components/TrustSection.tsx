@@ -153,7 +153,7 @@ export default function TrustSection() {
                     className="text-xs text-gray-500 mb-3"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
-                    DHA Chapter, Karachi
+                    Defence 6 Branch, Karachi
                   </div>
                   <a
                     href="https://share.google/sSrL2D6kPBB5QOMoN"

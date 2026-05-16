@@ -5,7 +5,7 @@
  */
 import { ChevronDown } from "lucide-react";
 
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/hero-dental-clinic-AVqVy7DuEc4tou5wHAWUNs.webp";
+const HERO_IMG = "/hero-bg.png";
 
 export default function HeroSection() {
   const scrollToTreatments = () => {
@@ -30,7 +30,7 @@ export default function HeroSection() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(105deg, rgba(11,31,58,0.92) 0%, rgba(11,31,58,0.75) 50%, rgba(11,31,58,0.40) 100%)",
+            "linear-gradient(105deg, rgba(11,31,58,0.85) 0%, rgba(11,31,58,0.65) 50%, rgba(11,31,58,0.30) 100%)",
         }}
       />
 
@@ -51,7 +51,7 @@ export default function HeroSection() {
               className="w-1.5 h-1.5 rounded-full"
               style={{ backgroundColor: "#C9A84C" }}
             />
-            DHA Chapter · Karachi, Pakistan
+            Defence 6 Branch · Karachi, Pakistan
           </div>
 
           {/* Main Heading */}
@@ -61,7 +61,7 @@ export default function HeroSection() {
           >
             Asthetik Dental
             <br />
-            <span style={{ color: "#C9A84C" }}>&amp; Implant Centre</span>
+            <span style={{ color: "#C9A84C" }}>and Implant Centre</span>
           </h1>
 
           {/* Subheading */}
@@ -69,7 +69,7 @@ export default function HeroSection() {
             className="text-lg md:text-xl text-white/80 mb-3"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
-            DHA Chapter, Karachi — Your Smile, Our Passion
+            Defence 6 Branch, Karachi — Your Smile, Our Passion
           </p>
 
           {/* Tagline */}

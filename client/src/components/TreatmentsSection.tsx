@@ -15,7 +15,7 @@ const treatments = [
     title: "Dental Implants",
     description:
       "Permanent, natural-looking tooth replacements that restore function and aesthetics with long-lasting results.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/treatment-dental-implants-Q92yhj6Bm34bLJFfdt5Dm9.webp",
+    image: "/dental-implant.jpg",
     href: "#booking",
   },
   {
@@ -29,7 +29,7 @@ const treatments = [
     title: "Teeth Whitening",
     description:
       "Professional-grade whitening treatments that deliver dramatic, safe results for a brighter, more confident smile.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/treatment-teeth-whitening-QWpd88ZYDaH3wEfCgFQBvc.webp",
+    image: "/teeth-whitening.jpg",
     href: "#booking",
   },
   {
@@ -43,7 +43,7 @@ const treatments = [
     title: "Wisdom Tooth Extraction",
     description:
       "Safe, comfortable removal of problematic wisdom teeth to prevent infection, crowding, and future complications.",
-    image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663644156437/2qUwipAsjCNzN4DpwqnJiA/treatment-wisdom-extraction-43DBKpGRsDTc2DvQMHgNJu.webp",
+    image: "/wisdom-tooth.jpg",
     href: "#booking",
   },
   {

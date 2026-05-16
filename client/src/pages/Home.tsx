@@ -46,9 +46,6 @@ export default function Home() {
       {/* 12. Location + 13. Book Consultation CTA + Booking Form */}
       <LocationSection />
 
-      {/* 14. Partner Brands Strip */}
-      <BrandsStrip />
-
       {/* 15. Footer */}
       <Footer />
 

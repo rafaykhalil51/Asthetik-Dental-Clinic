@@ -35,27 +35,33 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-5">
-              <div
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg"
-                style={{ backgroundColor: "#C9A84C" }}
-              >
-                A
-              </div>
+            <div className="flex items-center gap-4 mb-5">
               <div>
                 <div
-                  className="font-bold text-sm text-white leading-tight"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="font-bold text-xl text-white leading-none mb-1"
+                  style={{ 
+                    fontFamily: "'Playfair Display', serif", 
+                    letterSpacing: "1px",
+                    background: "linear-gradient(to right, #C9A84C, #ffffff)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    textShadow: "0 2px 10px rgba(201,168,76,0.3)"
+                  }}
                 >
                   Asthetik Dental
                 </div>
                 <div
-                  className="text-xs"
-                  style={{ color: "#C9A84C", fontFamily: "'Poppins', sans-serif" }}
+                  className="text-[10px] uppercase font-bold tracking-[4px]"
+                  style={{ color: "#C9A84C", opacity: 0.9, fontFamily: "'Poppins', sans-serif" }}
                 >
-                  &amp; Implant Centre
+                  and Implant Centre
                 </div>
               </div>
+              <img 
+                src="/logo.png" 
+                alt="Asthetik Dental" 
+                className="h-12 w-auto object-contain bg-white rounded-lg p-1.5 shadow-lg shadow-white/5"
+              />
             </div>
             <p
               className="text-xs text-white/50 leading-relaxed mb-5"
@@ -153,7 +159,7 @@ export default function Footer() {
                   className="text-xs text-white/50 leading-relaxed"
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
-                  DHA Chapter, Defence Housing Authority, Karachi, Pakistan
+                  Plot 11-C Lane 4, Bukhari Commercial Area, Phase 6, DHA, Karachi, Pakistan
                 </span>
               </div>
               <div className="flex items-center gap-2.5">
