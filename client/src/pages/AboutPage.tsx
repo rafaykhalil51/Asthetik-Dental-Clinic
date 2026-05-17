@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { motion } from "framer-motion";
 import { Shield, Award, Users, Heart } from "lucide-react";
+import AmbientBackground from "@/components/AmbientBackground";
 
 const values = [
   {
@@ -29,7 +30,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -64,7 +65,8 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section */}
-      <section className="py-32">
+      <section className="relative py-32 overflow-hidden">
+        <AmbientBackground variant="light" />
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div

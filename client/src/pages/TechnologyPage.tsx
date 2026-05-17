@@ -39,7 +39,7 @@ const techs = [
 
 export default function TechnologyPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}

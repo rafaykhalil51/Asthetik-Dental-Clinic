@@ -3,14 +3,15 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { motion } from "framer-motion";
 import { MapPin, Phone, MessageCircle, Clock, Navigation } from "lucide-react";
+import AmbientBackground from "@/components/AmbientBackground";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-white overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -40,7 +41,8 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Grid */}
-      <section className="py-32">
+      <section className="relative py-32 overflow-hidden">
+        <AmbientBackground variant="light" />
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-20">
             {/* Left: Contact Info */}

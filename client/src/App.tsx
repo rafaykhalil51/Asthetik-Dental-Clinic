@@ -13,6 +13,10 @@ import AboutPage from "./pages/AboutPage";
 import TreatmentsPage from "./pages/TreatmentsPage";
 import TechnologyPage from "./pages/TechnologyPage";
 import ContactPage from "./pages/ContactPage";
+import BlogPage from "./pages/BlogPage";
+import BlogArticlePage from "./pages/BlogArticlePage";
+import TestimonialsPage from "./pages/TestimonialsPage";
+import BeforeAfterPage from "./pages/BeforeAfterPage";
 
 function Router() {
   return (
@@ -24,6 +28,10 @@ function Router() {
         <Route path="/treatments" component={TreatmentsPage} />
         <Route path="/technology" component={TechnologyPage} />
         <Route path="/contact" component={ContactPage} />
+        <Route path="/blog" component={BlogPage} />
+        <Route path="/blog/:slug" component={BlogArticlePage} />
+        <Route path="/testimonials" component={TestimonialsPage} />
+        <Route path="/before-after" component={BeforeAfterPage} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>

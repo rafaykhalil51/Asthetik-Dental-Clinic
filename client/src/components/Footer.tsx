@@ -5,9 +5,11 @@ import { Link } from "wouter";
 const footerLinks = {
   clinic: [
     { label: "Home", href: "/" },
-    { label: "Our Story", href: "/about" },
     { label: "Treatments", href: "/treatments" },
     { label: "Innovation", href: "/technology" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "Before & After", href: "/before-after" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact Us", href: "/contact" },
   ],
   treatments: [

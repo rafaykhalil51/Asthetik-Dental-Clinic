@@ -5,6 +5,7 @@ import StepsSection from "@/components/StepsSection";
 import TreatmentsSection from "@/components/TreatmentsSection";
 import BeforeAfterSection from "@/components/BeforeAfterSection";
 import AboutSection from "@/components/AboutSection";
+import TeamSection from "@/components/TeamSection";
 import TechnologySection from "@/components/TechnologySection";
 import StandardsSection from "@/components/StandardsSection";
 import LocationSection from "@/components/LocationSection";
@@ -13,7 +14,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Sticky Navigation */}
       <Navbar />
 
@@ -35,7 +36,10 @@ export default function Home() {
       {/* 6. Specialist Team */}
       <AboutSection />
 
-      {/* 7. Smart Technology Showcase */}
+      {/* 7. Meet Our Specialists */}
+      <TeamSection />
+
+      {/* 8. Smart Technology Showcase */}
       <TechnologySection />
 
       {/* 8. Clinical Standards */}
